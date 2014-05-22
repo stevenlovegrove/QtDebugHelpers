@@ -7,7 +7,8 @@ Installation
 ==============
 
 * OSX 10.9
- Documentation implies that these helpers should function if added to .gdbinit or .lldbinit but I've not been able to get that to work. Instead, symlink these files to the following folder location:
+
+Documentation implies that these helpers should function if added to .gdbinit or .lldbinit but I've not been able to get that to work. Instead, symlink these files to the following folder location:
 ```
 ln -s `pwd`/*types.py /Applications/Qt\ Creator.app/Contents/Resources/debugger
 ```
@@ -17,7 +18,11 @@ from eigentypes import *
 from sophustypes import *
 ```
  For this to work, a recent version of lldb and Qt Creator are required. Please let me know if you come up with a simpler installation method.
+
 * Linux
- Let me know!
+
+Let me know!
+
 * Windows
- Let me know!
+
+Let me know!
