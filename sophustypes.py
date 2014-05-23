@@ -6,9 +6,12 @@
 ## Using lldb-310.2.37. My platform doesn't seem to recognise class namespaces,
 ## and to function correctly these have been omitted.
 
+from dumper import *
+
 # Sophus::SO3Group, expected function name qdump__Sophus__SO3Group
 def qdump__SO3Group(d, value):
     coeffs = value["unit_quaternion_"]["m_coeffs"]
+    d.putValue("")
     d.putNumChild(1)
     with Children(d):
         d.putSubItem( "Unit Quaternion", coeffs )
@@ -16,6 +19,7 @@ def qdump__SO3Group(d, value):
 # Sophus::RxSO3Group, expected function name qdump__Sophus__RxSO3Group
 def qdump__RxSO3Group(d, value):
     coeffs = value["quaternion_"]["m_coeffs"]
+    d.putValue("")
     d.putNumChild(1)
     with Children(d):
         d.putSubItem( "Quaternion", coeffs )

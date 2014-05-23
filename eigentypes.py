@@ -6,6 +6,8 @@
 ## Using lldb-310.2.37. My platform doesn't seem to recognise class namespaces,
 ## and to function correctly these have been omitted.
 
+from dumper import *
+
 # Eigen::Matrix, expected function name qdump__Eigen__Matrix
 # This dumper will work for all template instantiations of Eigen::Matrix and
 # typedefs there-of such as Vector3f, MatrixXd, etc.
@@ -39,3 +41,13 @@ def qdump__Matrix(d, value):
 # Eigen::Array is organised identically to Eigen::Matrix
 def qdump__Array(d, value):
     qdump__Matrix(d, value)
+
+# Eigen::Quaternion, expected function name qdump__Eigen__Quaternion
+def qdump__Quaternion(d, value):
+    d.putValue( "" )
+    d.putNumChild(4)
+    if d.isExpanded():
+        m_storage = value[0]["m_storage"]
+        m_data = m_storage["m_data"]
+        innerType = d.templateArgument(value.type, 0)
+        d.putPlotData(innerType, d.addressOf(value), 4)
